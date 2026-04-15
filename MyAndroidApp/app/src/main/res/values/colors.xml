@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Colors - Cyber Blue Theme -->
+    <color name="primary">#00BCD4</color>
+    <color name="primary_dark">#0097A7</color>
+    <color name="primary_light">#B2EBF2</color>
+    
+    <!-- Accent Color - Neon Cyan -->
+    <color name="accent">#00E5FF</color>
+    
+    <!-- Background Colors - Dark Theme -->
+    <color name="background_dark">#0D1117</color>
+    <color name="card_background">#161B22</color>
+    
+    <!-- Text Colors -->
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#8B949E</color>
+    
+    <!-- Status Colors -->
+    <color name="success">#00FF88</color>
+    <color name="warning">#FFAB00</color>
+    <color name="error">#FF5252</color>
+    
+    <!-- Divider -->
+    <color name="divider">#30363D</color>
+    
+    <!-- Sensor Value Highlight -->
+    <color name="sensor_value">#00E5FF</color>
+</resources>

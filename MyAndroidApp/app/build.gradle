@@ -1,0 +1,67 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.example.sensormonitor'
+    compileSdk COMPILE_SDK_VERSION.toInteger()
+
+    defaultConfig {
+        applicationId "com.example.sensormonitor"
+        minSdk MIN_SDK_VERSION.toInteger()
+        targetSdk TARGET_SDK_VERSION.toInteger()
+        versionCode 1
+        versionName "1.0.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            debuggable true
+        }
+    }
+    
+    compileOptions {
+        sourceCompatibility JavaVersion.valueOf(JAVA_SOURCE_COMPATIBILITY)
+        targetCompatibility JavaVersion.valueOf(JAVA_TARGET_COMPATIBILITY)
+    }
+    
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+    
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    // Core Android
+    implementation "androidx.appcompat:appcompat:${APP_COMPAT_VERSION}"
+    implementation "com.google.android.material:material:${MATERIAL_VERSION}"
+    implementation "androidx.constraintlayout:constraintlayout:${CONSTRAINT_LAYOUT_VERSION}"
+    implementation "androidx.activity:activity-ktx:${ACTIVITY_KTX_VERSION}"
+    implementation "androidx.fragment:fragment-ktx:${FRAGMENT_KTX_VERSION}"
+    
+    // Lifecycle components
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:${LIFECYCLE_VERSION}"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${LIFECYCLE_VERSION}"
+    
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${COROUTINES_VERSION}"
+    
+    // Charts for real-time visualization
+    implementation "com.github.PhilJay:MPAndroidChart:${MP_ANDROID_CHART_VERSION}"
+    
+    // Testing
+    testImplementation "junit:junit:${JUNIT_VERSION}"
+    androidTestImplementation "androidx.test.ext:junit:${ANDROIDX_JUNIT_VERSION}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${ESPRESSO_CORE_VERSION}"
+}
