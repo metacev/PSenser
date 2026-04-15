@@ -1,16 +1,17 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
 }
 
 android {
     namespace 'com.example.sensormonitor'
-    compileSdk Integer.parseInt(project.property('compileSdkVersion'))
+    compileSdk Integer.parseInt(project.property("compileSdkVersion"))
 
     defaultConfig {
         applicationId "com.example.sensormonitor"
-        minSdk Integer.parseInt(project.property('minSdkVersion'))
-        targetSdk Integer.parseInt(project.property('targetSdkVersion'))
+        minSdk Integer.parseInt(project.property("minSdkVersion"))
+        targetSdk Integer.parseInt(project.property("targetSdkVersion"))
         versionCode 1
         versionName "1.0"
 
@@ -25,8 +26,8 @@ android {
     }
     
     compileOptions {
-        sourceCompatibility JavaVersion.valueOf(project.property('javaVersion'))
-        targetCompatibility JavaVersion.valueOf(project.property('javaVersion'))
+        sourceCompatibility JavaVersion.valueOf(project.property("javaVersion"))
+        targetCompatibility JavaVersion.valueOf(project.property("javaVersion"))
     }
     
     kotlinOptions {
@@ -39,14 +40,14 @@ android {
 }
 
 dependencies {
-    implementation "androidx.core:core-ktx:1.13.1"
+    implementation "androidx.core:core-ktx:${coreKtxVersion}"
     implementation "androidx.appcompat:appcompat:${appcompatVersion}"
     implementation "com.google.android.material:material:${materialVersion}"
     implementation "androidx.constraintlayout:constraintlayout:${constraintlayoutVersion}"
     implementation "androidx.activity:activity-ktx:${activityKtxVersion}"
+    implementation "androidx.fragment:fragment-ktx:${fragmentKtxVersion}"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:${lifecycleVersion}"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${lifecycleVersion}"
-    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
     
     testImplementation "junit:junit:${junitVersion}"
     androidTestImplementation "androidx.test.ext:junit:${androidxJunitVersion}"

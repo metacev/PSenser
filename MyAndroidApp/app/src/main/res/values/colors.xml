@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Primary colors -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    
+    <!-- Cyber Theme Colors -->
     <color name="background_dark">#0D1117</color>
     <color name="card_background">#161B22</color>
-    
-    <!-- Text colors -->
-    <color name="text_primary">#E6EDF3</color>
-    <color name="text_secondary">#8B949E</color>
-    
-    <!-- Accent colors (Neon/Cyber theme) -->
     <color name="accent_cyan">#00E5FF</color>
-    <color name="accent_green">#00FF88</color>
-    <color name="accent_orange">#FF9500</color>
-    <color name="accent_purple">#BF5AF2</color>
-    <color name="accent_pink">#FF2D55</color>
-    <color name="accent_blue">#0A84FF</color>
-    
-    <!-- Status colors -->
-    <color name="status_good">#00FF88</color>
-    <color name="status_warning">#FF9500</color>
-    <color name="status_error">#FF2D55</color>
+    <color name="accent_green">#00FF9D</color>
+    <color name="accent_purple">#BD00FF</color>
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#8B949E</color>
+    <color name="divider">#30363D</color>
 </resources>

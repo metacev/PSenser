@@ -1,86 +1,47 @@
-# Sensor Monitor App
+# Sensor Monitor - Android App
 
-A professional Android application for monitoring all device sensors and hardware status in real-time.
+A professional sensor monitoring application for Android 10 (API 29) to Android 16 (API 36).
 
-## 📱 Features
+## Features
 
 ### Real-time Sensor Monitoring
-- **Accelerometer** - 3-axis acceleration (m/s²)
-- **Gyroscope** - Angular velocity (rad/s)
-- **Magnetometer** - Magnetic field strength (μT)
-- **Barometer** - Atmospheric pressure (hPa)
-- **Light Sensor** - Ambient light (lux)
-- **Proximity Sensor** - Distance detection (cm)
-- **Humidity Sensor** - Relative humidity (%)
-- **Temperature Sensor** - Ambient temperature (°C)
-- **Gravity Sensor** - Gravity force (m/s²)
-- **Linear Acceleration** - Linear acceleration without gravity
-- **Rotation Vector** - Device orientation
-- **Step Counter** - Step counting
-- **And more...**
+- Accelerometer (三轴加速度)
+- Gyroscope (角速度)
+- Magnetometer (磁场强度)
+- Barometer (大气压力)
+- Light Sensor (环境光强度)
+- Proximity (距离检测)
+- Humidity (相对湿度)
+- Temperature (环境温度)
+- And 15+ other sensors
 
 ### Hardware Status
-- **CPU**: Core count, frequency, temperature
-- **Battery**: Level, status, health, voltage, temperature, charger type
-- **Camera**: Front/back camera availability, camera IDs
-- **Audio**: Microphone/speaker status, volume levels
-- **Device Info**: Model, manufacturer, Android version, memory usage
+- CPU information
+- Camera status
+- Microphone/Speaker status
+- Battery information
 
-## 🔧 Technical Specifications
+### System Information
+- Device model
+- Android version (with code names)
+- RAM usage
 
-### Compatibility
-- **Minimum SDK**: Android 10 (API 29)
-- **Target SDK**: Android 16 (API 36)
-- **Compile SDK**: API 36
+## Technical Specifications
 
-### Unified Version Management
-All versions are centralized in `gradle.properties`:
-- SDK versions
-- Build tools version
-- Dependency versions
-- Java version
+| Item | Value |
+|------|-------|
+| Min SDK | 29 (Android 10) |
+| Target SDK | 36 (Android 16) |
+| Compile SDK | 36 |
+| Language | Kotlin 2.0.0 |
+| AGP | 8.7.0 |
+| Java Version | 17 |
 
-### Permissions
-- Activity Recognition (Android 10+)
-- Bluetooth Connect (Android 12+)
-- Post Notifications (Android 13+)
-- Camera (optional, for status check only)
-- Record Audio (optional, for status check only)
-
-## 🚀 Getting Started
-
-### Prerequisites
-- Android Studio Hedgehog (2023.1.1) or newer
-- JDK 17
-- Android SDK with API 36
-
-### Installation
-
-1. **Open Project**
-   ```
-   File > Open > Select MyAndroidApp folder
-   ```
-
-2. **Sync Gradle**
-   ```
-   File > Sync Project with Gradle Files
-   ```
-
-3. **Build APK**
-   ```bash
-   ./gradlew assembleDebug
-   ```
-   Or use: `Build > Build APK(s)`
-
-4. **Run on Device**
-   - Connect Android 10+ device with USB debugging enabled
-   - Click Run button or press Shift+F10
-
-## 📁 Project Structure
+## Project Structure
 
 ```
 MyAndroidApp/
-├── gradle.properties          # Unified version configuration
+├── gradle.properties          # Unified version management
 ├── build.gradle               # Project-level build config
 ├── settings.gradle            # Project settings
 ├── app/
@@ -89,46 +50,40 @@ MyAndroidApp/
 │       ├── AndroidManifest.xml
 │       ├── java/com/example/sensormonitor/
 │       │   ├── model/         # Data models
-│       │   │   └── DataModels.kt
 │       │   ├── ui/            # UI components
-│       │   │   └── MainActivity.kt
+│       │   │   ├── fragments/ # Page fragments
+│       │   │   └── ...
 │       │   └── util/          # Utility classes
-│       │       ├── SensorManagerUtil.kt
-│       │       └── DeviceInfoManager.kt
 │       └── res/
-│           ├── layout/        # UI layouts
-│           ├── values/        # Colors, strings, themes
-│           ├── drawable/      # Icons and graphics
+│           ├── layout/        # XML layouts
+│           ├── values/        # Colors, themes, strings
 │           └── mipmap-*/      # App icons
 └── README.md
 ```
 
-## 🎨 UI Design
+## Build Instructions
 
-The app features a modern cyberpunk-inspired dark theme:
-- **Background**: Deep dark (#0D1117)
-- **Cards**: Slightly lighter (#161B22)
-- **Accent Colors**: Neon cyan, green, orange, purple, pink
-- **Text**: High contrast white/gray
-- **Font**: Monospace for data display
+1. Open the project in Android Studio Hedgehog (2023.1.1) or later
+2. Sync Gradle files: File > Sync Project with Gradle Files
+3. Build APK: Build > Build APK(s) or run `./gradlew assembleDebug`
+4. Install on device running Android 10-16
 
-## ⚠️ Notes
+## Permissions
 
-- Some sensors may not be available on all devices
-- CPU temperature reading may require root access on some devices
-- Camera and microphone permissions are optional (used for status check only)
-- The app automatically handles missing sensors gracefully
+The app requests the following permissions based on Android version:
+- **Android 10+**: ACTIVITY_RECOGNITION
+- **Android 13+**: POST_NOTIFICATIONS
 
-## 📄 License
+All hardware features are declared as optional (`android:required="false"`) for maximum compatibility.
 
-This project is provided as-is for educational and demonstration purposes.
+## UI Theme
 
-## 🔄 Updates
+Cyberpunk-inspired dark theme with:
+- Dark background (#0D1117)
+- Neon cyan accent (#00E5FF)
+- Card-based layout
+- Monospace fonts for data display
 
-### Version 1.0
-- Initial release
-- Support for Android 10-16
-- Real-time sensor monitoring
-- Hardware status display
-- Unified version management
-- Modern Material Design 3 UI
+## License
+
+This project is for educational purposes.

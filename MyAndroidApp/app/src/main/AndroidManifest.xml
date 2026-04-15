@@ -2,36 +2,29 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Hardware features (all optional for compatibility) -->
+    <!-- Hardware Features (Optional) -->
     <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="false"/>
     <uses-feature android:name="android.hardware.sensor.gyroscope" android:required="false"/>
     <uses-feature android:name="android.hardware.sensor.barometer" android:required="false"/>
     <uses-feature android:name="android.hardware.sensor.light" android:required="false"/>
     <uses-feature android:name="android.hardware.sensor.proximity" android:required="false"/>
-    <uses-feature android:name="android.hardware.sensor.stepcounter" android:required="false"/>
     <uses-feature android:name="android.hardware.camera" android:required="false"/>
-    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
     <uses-feature android:name="android.hardware.microphone" android:required="false"/>
 
     <!-- Permissions -->
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
-    
-    <!-- Android 10+ (API 29+) -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" android:maxSdkVersion="30"/>
     <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION"/>
     
-    <!-- Android 12+ (API 31+) -->
-    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
-    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT"/>
+    <!-- Android 12+ -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" tools:ignore="ProtectedPermissions"/>
     
-    <!-- Android 13+ (API 33+) -->
+    <!-- Android 13+ -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
-    
-    <!-- Camera and Audio (used only for status check, not recording) -->
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO"/>
 
     <application
         android:allowBackup="true"
@@ -41,7 +34,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SensorMonitor"
         tools:targetApi="36">
-
+        
         <activity
             android:name=".ui.MainActivity"
             android:exported="true"
@@ -52,7 +45,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        
     </application>
-
 </manifest>
