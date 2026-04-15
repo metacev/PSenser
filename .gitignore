@@ -1,40 +1,67 @@
 ```
-# Android build outputs
+# Android build artifacts
 *.apk
 *.aar
-*.aab
 *.dex
-
-# Android build directories
-build/
-.gradle/
-captures/
-.externalNativeBuild/
-.cxx/
-
-# Android Studio
-.idea/
-*.iml
-*.iws
-*.log
 
 # Gradle
 .gradle/
-gradle-app.setting
-!gradle.properties
+build/
+app/build/
 
 # Local configuration file (sdk path, etc)
 local.properties
 
-# Keystore properties
+# Log Files
+*.log
+
+# Android Studio Navigation editor temp files
+.navigation/
+
+# External native build folder generated in Android Studio 2.2 and later
+.externalNativeBuild
+
+# Keystore files
 *.keystore
 *.jks
 
 # Generated files
 gen/
-out/
+generated/
 
 # Debug & Release folders
 debug/
 release/
+
+# Proguard
+proguard/
+
+# Coverage reports
+coverage/
+*.ec
+*.lcov
+
+# APK Analyzer
+.apk-analyzer/
+
+# Android device logs
+adb.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# IDE files
+.idea/
+*.iml
+*.iws
+
+# Environment
+.env
+.env.local
+.env.*
+
+# OS generated files
+.DS_Store
+Thumbs.db
 ```

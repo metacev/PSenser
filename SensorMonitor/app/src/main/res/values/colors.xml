@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 主背景色 - 深色科技主题 -->
+    <color name="background_primary">#0D1117</color>
+    
+    <!-- 卡片背景色 -->
+    <color name="card_background">#161B22</color>
+    
+    <!-- 主要文字颜色 -->
+    <color name="text_primary">#E6EDF3</color>
+    
+    <!-- 次要文字颜色 -->
+    <color name="text_secondary">#8B949E</color>
+    
+    <!-- 分隔线颜色 -->
+    <color name="divider">#30363D</color>
+    
+    <!-- 强调色 - 青色 (主) -->
+    <color name="accent_cyan">#00E5FF</color>
+    
+    <!-- 强调色 - 绿色 (CPU) -->
+    <color name="accent_green">#00FF88</color>
+    
+    <!-- 强调色 - 紫色 (相机) -->
+    <color name="accent_purple">#BB66FF</color>
+    
+    <!-- 强调色 - 橙色 (音频) -->
+    <color name="accent_orange">#FF9F43</color>
+    
+    <!-- 强调色 - 蓝色 (网络) -->
+    <color name="accent_blue">#5C7CFA</color>
+    
+    <!-- 警告色 -->
+    <color name="warning">#FF6B6B</color>
+    
+    <!-- 成功色 -->
+    <color name="success">#51CF66</color>
+</resources>
