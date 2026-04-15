@@ -1,29 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Primary Colors - Cyber Blue Theme -->
-    <color name="primary">#00BCD4</color>
-    <color name="primary_dark">#0097A7</color>
-    <color name="primary_light">#B2EBF2</color>
-    
-    <!-- Accent Color - Neon Cyan -->
-    <color name="accent">#00E5FF</color>
-    
-    <!-- Background Colors - Dark Theme -->
+    <!-- Primary colors -->
     <color name="background_dark">#0D1117</color>
     <color name="card_background">#161B22</color>
     
-    <!-- Text Colors -->
-    <color name="text_primary">#FFFFFF</color>
+    <!-- Text colors -->
+    <color name="text_primary">#E6EDF3</color>
     <color name="text_secondary">#8B949E</color>
     
-    <!-- Status Colors -->
-    <color name="success">#00FF88</color>
-    <color name="warning">#FFAB00</color>
-    <color name="error">#FF5252</color>
+    <!-- Accent colors (Neon/Cyber theme) -->
+    <color name="accent_cyan">#00E5FF</color>
+    <color name="accent_green">#00FF88</color>
+    <color name="accent_orange">#FF9500</color>
+    <color name="accent_purple">#BF5AF2</color>
+    <color name="accent_pink">#FF2D55</color>
+    <color name="accent_blue">#0A84FF</color>
     
-    <!-- Divider -->
-    <color name="divider">#30363D</color>
-    
-    <!-- Sensor Value Highlight -->
-    <color name="sensor_value">#00E5FF</color>
+    <!-- Status colors -->
+    <color name="status_good">#00FF88</color>
+    <color name="status_warning">#FF9500</color>
+    <color name="status_error">#FF2D55</color>
 </resources>

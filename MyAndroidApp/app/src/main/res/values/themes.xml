@@ -1,39 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme -->
-    <style name="Theme.SensorMonitor" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.SensorMonitor" parent="Theme.Material3.Dark.NoActionBar">
         <!-- Primary brand color -->
-        <item name="colorPrimary">@color/primary</item>
-        <item name="colorPrimaryVariant">@color/primary_dark</item>
-        <item name="colorOnPrimary">@color/text_primary</item>
+        <item name="colorPrimary">@color/accent_cyan</item>
+        <item name="colorPrimaryVariant">@color/accent_blue</item>
+        <item name="colorOnPrimary">@color/background_dark</item>
         
         <!-- Secondary brand color -->
-        <item name="colorSecondary">@color/accent</item>
-        <item name="colorSecondaryVariant">@color/primary_dark</item>
-        <item name="colorOnSecondary">@color/text_primary</item>
+        <item name="colorSecondary">@color/accent_green</item>
+        <item name="colorSecondaryVariant">@color/accent_cyan</item>
+        <item name="colorOnSecondary">@color/background_dark</item>
         
         <!-- Status bar color -->
-        <item name="android:statusBarColor">@color/primary_dark</item>
+        <item name="android:statusBarColor">@color/background_dark</item>
         <item name="android:navigationBarColor">@color/background_dark</item>
         
         <!-- Background -->
-        <item name="android:windowBackground">@color/background_dark</item>
+        <item name="android:colorBackground">@color/background_dark</item>
         <item name="backgroundColor">@color/background_dark</item>
+        
+        <!-- Text colors -->
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+        
+        <!-- Toolbar style -->
+        <item name="toolbarStyle">@style/Widget.App.Toolbar</item>
     </style>
-
-    <!-- No ActionBar theme -->
-    <style name="Theme.SensorMonitor.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
-    <!-- AppBar Overlay -->
-    <style name="Theme.SensorMonitor.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-        <item name="colorControlNormal">@color/text_primary</item>
-    </style>
-
-    <!-- Popup Overlay -->
-    <style name="Theme.SensorMonitor.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
-        <item name="android:colorBackground">@color/card_background</item>
+    
+    <!-- Custom Toolbar style -->
+    <style name="Widget.App.Toolbar" parent="Widget.Material3.Toolbar">
+        <item name="android:background">@color/background_dark</item>
+        <item name="titleTextColor">@color/accent_cyan</item>
     </style>
 </resources>
