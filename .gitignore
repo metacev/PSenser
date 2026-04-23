@@ -1,45 +1,24 @@
 ```
-# Android
+# Android build artifacts
 *.apk
 *.aar
-*.jar
-*.so
 *.dex
-*.class
 
-# Build outputs
+# Android dependency directories
 build/
-.externalNativeBuild/
-.intermediates/
-.outputs/
-
-# Gradle
 .gradle/
-!gradle-wrapper.jar
-
-# Local configuration file (sdk path, etc)
 local.properties
 
-# Log Files
+# IDE files
+.idea/
+*.iml
+*.iws
+.vscode/
+
+# Logs
 *.log
 
-# Android Studio Navigation editor temp files
-.navigation/
-
-# Android Studio captures folder
-captures/
-
-# IntelliJ IDEA artifacts
-*.iml
-*.ipr
-*.iws
-.idea/
-
-# Generated files
-gen/
-out/
-
-# Debug & Release folders
-debug/
-release/
+# OS generated files
+.DS_Store
+Thumbs.db
 ```
