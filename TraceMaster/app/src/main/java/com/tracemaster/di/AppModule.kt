@@ -5,9 +5,12 @@ import com.tracemaster.data.local.dao.TrackDao
 import com.tracemaster.data.local.database.TrackDatabase
 import com.tracemaster.data.repository.TrackRepository
 import com.tracemaster.data.repository.TrackRepositoryImpl
+import com.tracemaster.domain.manager.SubscriptionManager
 import com.tracemaster.util.location.LocationManager
 import com.tracemaster.util.map.AMapManager
 import com.tracemaster.util.permissions.PermissionManager
+import com.tracemaster.util.security.AntiCheatEngine
+import com.tracemaster.util.security.PrivacyDesensitizationEngine
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -76,5 +79,23 @@ object AppModule {
     @Singleton
     fun provideAMapManager(): AMapManager {
         return AMapManager()
+    }
+
+    @Provides
+    @Singleton
+    fun provideSubscriptionManager(): SubscriptionManager {
+        return SubscriptionManager()
+    }
+
+    @Provides
+    @Singleton
+    fun provideAntiCheatEngine(): AntiCheatEngine {
+        return AntiCheatEngine()
+    }
+
+    @Provides
+    @Singleton
+    fun providePrivacyDesensitizationEngine(): PrivacyDesensitizationEngine {
+        return PrivacyDesensitizationEngine()
     }
 }

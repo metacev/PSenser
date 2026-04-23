@@ -7,8 +7,13 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.tracemaster.data.local.dao.TrackDao
+import com.tracemaster.domain.model.Setting
+import com.tracemaster.domain.model.Tag
 import com.tracemaster.domain.model.Track
 import com.tracemaster.domain.model.TrackPoint
+import com.tracemaster.domain.model.TrackSegment
+import com.tracemaster.domain.model.TrackPhoto
+import com.tracemaster.domain.model.TrackTagCrossRef
 import net.sqlcipher.database.SQLiteDatabase
 import net.sqlcipher.database.SupportFactory
 import java.util.Date
