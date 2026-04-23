@@ -27,3 +27,18 @@
 -keepclasseswithmembernames class * {
     native <methods>;
 }
+
+# AMap (高德地图) SDK ProGuard Rules
+-keep class com.amap.api.** { *; }
+-keep class com.autonavi.** { *; }
+-dontwarn com.amap.api.**
+-dontwarn com.autonavi.**
+-keep class * implements com.amap.api.maps.AMap$OnCameraChangeListener { *; }
+-keep class * implements com.amap.api.maps.AMap$OnMapLoadedListener { *; }
+-keep class * implements com.amap.api.maps.AMap$OnMarkerClickListener { *; }
+-keep class * implements com.amap.api.maps.AMap$OnInfoWindowClickListener { *; }
+-keepattributes SourceFile,LineNumberTable
+-keepclassmembers class * {
+    @com.amap.api.maps.model.* <fields>;
+    @com.amap.api.maps.model.* <methods>;
+}

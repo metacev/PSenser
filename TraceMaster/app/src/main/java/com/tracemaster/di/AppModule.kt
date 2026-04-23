@@ -6,7 +6,8 @@ import com.tracemaster.data.local.database.TrackDatabase
 import com.tracemaster.data.repository.TrackRepository
 import com.tracemaster.data.repository.TrackRepositoryImpl
 import com.tracemaster.util.location.LocationManager
-import dagger.Binds
+import com.tracemaster.util.map.AMapManager
+import com.tracemaster.util.permissions.PermissionManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,7 +25,8 @@ object AppModule {
     @Provides
     @Singleton
     fun provideTrackDatabase(@ApplicationContext context: Context): TrackDatabase {
-        return TrackDatabase.getDatabase(context)
+        // 默认启用加密，可通过 BuildConfig 控制
+        return TrackDatabase.getDatabase(context, useEncryption = true)
     }
 
     @Provides
@@ -35,8 +37,30 @@ object AppModule {
 
     @Provides
     @Singleton
+    fun provideTrackSegmentDao(database: TrackDatabase) = database.trackSegmentDao()
+
+    @Provides
+    @Singleton
+    fun provideTrackPhotoDao(database: TrackDatabase) = database.trackPhotoDao()
+
+    @Provides
+    @Singleton
+    fun provideTagDao(database: TrackDatabase) = database.tagDao()
+
+    @Provides
+    @Singleton
+    fun provideSettingDao(database: TrackDatabase) = database.settingDao()
+
+    @Provides
+    @Singleton
     fun provideLocationManager(@ApplicationContext context: Context): LocationManager {
         return LocationManager(context)
+    }
+
+    @Provides
+    @Singleton
+    fun providePermissionManager(@ApplicationContext context: Context): PermissionManager {
+        return PermissionManager(context)
     }
 
     @Provides
@@ -46,5 +70,11 @@ object AppModule {
         locationManager: LocationManager
     ): TrackRepository {
         return TrackRepositoryImpl(trackDao, locationManager)
+    }
+    
+    @Provides
+    @Singleton
+    fun provideAMapManager(): AMapManager {
+        return AMapManager()
     }
 }

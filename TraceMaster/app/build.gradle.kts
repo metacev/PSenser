@@ -96,9 +96,14 @@ dependencies {
     // Location Services
     implementation("com.google.android.gms:play-services-location:21.1.0")
 
-    // Maps
-    implementation("com.google.maps.android:maps-compose:4.3.3")
-    implementation("com.google.android.gms:play-services-maps:18.2.0")
+    // Maps - Google Maps (commented out, using AMap instead)
+    // implementation("com.google.maps.android:maps-compose:4.3.3")
+    // implementation("com.google.android.gms:play-services-maps:18.2.0")
+    
+    // AMap (高德地图) SDK
+    implementation("com.amap.api:3dmap:latest.integration")
+    implementation("com.amap.api:location:latest.integration")
+    implementation("com.amap.api:search:latest.integration")
 
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
@@ -109,6 +114,10 @@ dependencies {
 
     // Preferences
     implementation("androidx.datastore:datastore-preferences:1.0.0")
+
+    // SQLCipher for database encryption
+    implementation("net.zetetic:android-database-sqlcipher:4.5.4")
+    implementation("androidx.sqlite:sqlite-ktx:2.4.0")
 
     // WorkManager for background tasks
     implementation("androidx.work:work-runtime-ktx:2.9.0")
@@ -121,6 +130,9 @@ dependencies {
         exclude(group = "xpp3", module = "xpp3")
         exclude(group = "stax", module = "stax-api")
     }
+
+    // Timber logging library
+    implementation("com.jakewharton.timber:timber:5.0.1")
 
     // Testing
     testImplementation("junit:junit:4.13.2")

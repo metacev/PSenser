@@ -1,0 +1,9 @@
+# 高德地图 API Key 配置示例
+# 复制此文件为 local.properties 并填入您的真实 API Key
+
+# 高德地图 SDK API Key (必需)
+# 获取方式：https://console.amap.com/
+AMAP_API_KEY=您的高德地图API密钥
+
+# Android SDK 路径 (由 Android Studio 自动生成)
+# sdk.dir=/path/to/your/android/sdk

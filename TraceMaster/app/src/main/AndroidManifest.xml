@@ -44,10 +44,18 @@
         android:theme="@style/Theme.TraceMaster"
         tools:targetApi="34">
 
-        <!-- Google Maps API Key -->
-        <meta-data
+        <!-- Google Maps API Key (commented out, using AMap instead) -->
+        <!-- <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="${MAPS_API_KEY}" />
+            android:value="${MAPS_API_KEY}" /> -->
+
+        <!-- AMap (高德地图) API Key -->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="${AMAP_API_KEY}" />
+        
+        <!-- AMap Location Service -->
+        <service android:name="com.amap.api.location.APSService" />
 
         <!-- Location Services -->
         <meta-data

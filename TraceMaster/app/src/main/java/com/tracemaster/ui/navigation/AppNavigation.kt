@@ -8,7 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.tracemaster.ui.screens.home.HomeScreen
-import com.tracemaster.ui.screens.map.MapScreen
+import com.tracemaster.ui.screens.map.AMapScreen
 import com.tracemaster.ui.screens.record.RecordScreen
 import com.tracemaster.ui.screens.list.TrackListScreen
 import com.tracemaster.ui.screens.detail.TrackDetailScreen
@@ -50,7 +50,8 @@ fun AppNavigation() {
         }
         
         composable(Screen.Map.route) {
-            MapScreen(
+            // 使用高德地图屏幕替代 Google Map
+            AMapScreen(
                 onNavigateBack = { navController.popBackStack() },
                 onStartRecording = { navController.navigate(Screen.Record.route) }
             )
