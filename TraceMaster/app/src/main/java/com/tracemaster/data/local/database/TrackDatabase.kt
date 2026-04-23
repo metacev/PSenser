@@ -1,0 +1,73 @@
+package com.tracemaster.data.local.database
+
+import android.content.Context
+import androidx.room.Database
+import androidx.room.Room
+import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.tracemaster.data.local.dao.TrackDao
+import com.tracemaster.domain.model.Track
+import com.tracemaster.domain.model.TrackPoint
+import java.util.Date
+
+/**
+ * 类型转换器 - 用于 Room 数据库支持复杂类型
+ */
+class Converters {
+    @TypeConverter
+    fun fromTimestamp(value: Long?): Date? {
+        return value?.let { Date(it) }
+    }
+
+    @TypeConverter
+    fun dateToTimestamp(date: Date?): Long? {
+        return date?.time
+    }
+
+    @TypeConverter
+    fun fromSportType(value: String): com.tracemaster.domain.model.SportType {
+        return com.tracemaster.domain.model.SportType.valueOf(value)
+    }
+
+    @TypeConverter
+    fun sportTypeToString(sportType: com.tracemaster.domain.model.SportType): String {
+        return sportType.name
+    }
+}
+
+/**
+ * 轨迹数据库 - Room Database
+ * 
+ * 包含两个表：
+ * 1. tracks - 轨迹主表
+ * 2. track_points - 轨迹点表
+ */
+@Database(
+    entities = [Track::class, TrackPoint::class],
+    version = 1,
+    exportSchema = true
+)
+@TypeConverters(Converters::class)
+abstract class TrackDatabase : RoomDatabase() {
+
+    abstract fun trackDao(): TrackDao
+
+    companion object {
+        @Volatile
+        private var INSTANCE: TrackDatabase? = null
+
+        fun getDatabase(context: Context): TrackDatabase {
+            return INSTANCE ?: synchronized(this) {
+                val instance = Room.databaseBuilder(
+                    context.applicationContext,
+                    TrackDatabase::class.java,
+                    "track_database"
+                )
+                    .fallbackToDestructiveMigration()
+                    .build()
+                INSTANCE = instance
+                instance
+            }
+        }
+    }
+}

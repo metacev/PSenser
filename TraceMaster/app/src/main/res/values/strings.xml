@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TraceMaster</string>
+    
+    <!-- Common -->
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="delete">删除</string>
+    <string name="edit">编辑</string>
+    <string name="save">保存</string>
+    <string name="share">分享</string>
+    <string name="export">导出</string>
+    <string name="import_title">导入</string>
+    
+    <!-- Home Screen -->
+    <string name="home_welcome">欢迎使用轨迹录制</string>
+    <string name="start_recording">开始录制</string>
+    <string name="view_history">历史轨迹</string>
+    
+    <!-- Map Screen -->
+    <string name="map_title">地图</string>
+    <string name="my_location">我的位置</string>
+    
+    <!-- Record Screen -->
+    <string name="recording">录制中</string>
+    <string name="pause">暂停</string>
+    <string name="resume">继续</string>
+    <string name="stop">停止</string>
+    <string name="duration">时长</string>
+    <string name="distance">距离</string>
+    <string name="speed">速度</string>
+    <string name="pace">配速</string>
+    
+    <!-- Track List -->
+    <string name="track_list_title">历史轨迹</string>
+    <string name="search_hint">搜索轨迹...</string>
+    
+    <!-- Track Detail -->
+    <string name="track_detail_title">轨迹详情</string>
+    <string name="statistics">统计数据</string>
+    <string name="avg_speed">平均速度</string>
+    <string name="max_speed">最高速度</string>
+    <string name="elevation_gain">海拔爬升</string>
+    <string name="export_gpx">导出 GPX</string>
+    
+    <!-- Settings -->
+    <string name="settings_title">设置</string>
+    <string name="appearance">外观</string>
+    <string name="dark_mode">深色模式</string>
+    <string name="units">单位</string>
+    <string name="distance_unit">距离单位</string>
+    <string name="recording_settings">录制设置</string>
+    <string name="auto_pause">自动暂停</string>
+    <string name="location_accuracy">定位精度</string>
+    <string name="sampling_frequency">采集频率</string>
+    <string name="data_management">数据管理</string>
+    <string name="export_data">导出数据</string>
+    <string name="clear_cache">清除缓存</string>
+    <string name="about">关于</string>
+    <string name="version">版本</string>
+    <string name="privacy_policy">隐私政策</string>
+    
+    <!-- Import/Export -->
+    <string name="import_export_title">导入导出</string>
+    <string name="export_data_desc">将轨迹导出为 GPX/KML/GeoJSON 格式</string>
+    <string name="import_data_desc">从文件导入 GPX/KML/GeoJSON 轨迹</string>
+    <string name="select_file">选择文件</string>
+    <string name="supported_formats">支持的格式</string>
+    
+    <!-- Permissions -->
+    <string name="permission_location_title">位置权限</string>
+    <string name="permission_location_message">需要位置权限来记录您的轨迹</string>
+    <string name="permission_background_location_title">后台位置权限</string>
+    <string name="permission_background_location_message">需要后台位置权限以在应用后台时继续录制轨迹</string>
+    <string name="permission_notification_title">通知权限</string>
+    <string name="permission_notification_message">需要通知权限以显示录制状态</string>
+    
+    <!-- Notifications -->
+    <string name="notification_channel_name">轨迹录制服务</string>
+    <string name="notification_channel_description">用于后台持续录制轨迹</string>
+    <string name="notification_recording">轨迹录制中</string>
+    <string name="notification_paused">已暂停</string>
+    
+    <!-- Messages -->
+    <string name="confirm_stop_recording">确定要停止录制吗？</string>
+    <string name="recording_saved">轨迹已保存</string>
+    <string name="export_success">导出成功</string>
+    <string name="export_failed">导出失败</string>
+    <string name="import_success">导入成功</string>
+    <string name="import_failed">导入失败</string>
+</resources>
