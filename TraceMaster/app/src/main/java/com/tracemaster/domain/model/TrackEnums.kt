@@ -31,3 +31,13 @@ enum class PointQuality {
     LOW,        // 低精度 (> 50m)
     INVALID     // 无效点 (漂移点)
 }
+
+/**
+ * 导出格式枚举
+ */
+enum class ExportFormat(val extension: String, val displayName: String, val mimeType: String) {
+    GPX("gpx", "GPX (.gpx)", "application/gpx+xml"),
+    KML("kml", "KML (.kml)", "application/vnd.google-earth.kml+xml"),
+    GEOJSON("geojson", "GeoJSON (.geojson)", "application/geo+json"),
+    CSV("csv", "CSV (.csv)", "text/csv")
+}

@@ -1,9 +1,7 @@
 package com.tracemaster.data.repository
 
-import com.tracemaster.data.local.dao.TrackDao
-import com.tracemaster.domain.model.SportType
-import com.tracemaster.domain.model.Track
-import com.tracemaster.domain.model.TrackPoint
+import com.tracemaster.data.local.dao.*
+import com.tracemaster.domain.model.*
 import com.tracemaster.util.location.LocationData
 import kotlinx.coroutines.flow.Flow
 import java.util.Date
@@ -15,6 +13,10 @@ import kotlin.math.*
  */
 class TrackRepositoryImpl @Inject constructor(
     private val trackDao: TrackDao,
+    private val trackSegmentDao: TrackSegmentDao,
+    private val trackPhotoDao: TrackPhotoDao,
+    private val tagDao: TagDao,
+    private val settingDao: SettingDao,
     private val locationManager: com.tracemaster.util.location.LocationManager
 ) : TrackRepository {
 
@@ -89,7 +91,6 @@ class TrackRepositoryImpl @Inject constructor(
     }
 
     override suspend fun pauseRecording(trackId: Long) {
-        // 暂停时更新总时长
         val track = trackDao.getTrackById(trackId) ?: return
         val totalTime = (Date().time - track.startTime.time) / 1000
         trackDao.updateTrackStats(trackId, track.totalDistance, totalTime, track.pointCount, Date())
@@ -103,7 +104,6 @@ class TrackRepositoryImpl @Inject constructor(
         val track = trackDao.getTrackById(trackId) ?: return
         val points = trackDao.getPointsByTrackIdSync(trackId)
         
-        // 计算最终统计数据
         val totalDistance = calculateTotalDistance(points)
         val totalTime = (Date().time - track.startTime.time) / 1000
         
@@ -132,7 +132,6 @@ class TrackRepositoryImpl @Inject constructor(
         
         trackDao.insertTrackPoint(point)
         
-        // 更新轨迹的统计信息
         if (pointIndex > 0) {
             val previousPoint = trackDao.getPointsBySegment(trackId, 0)
                 .find { it.pointIndex == pointIndex - 1 }
@@ -174,10 +173,77 @@ class TrackRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getUnfinishedTrack(): Track? {
-        // 查找没有结束时间的轨迹
-        val allTracks = trackDao.getAllTracks(false)
-        // 由于是 Flow，需要在调用处处理
         return null
+    }
+
+    // ==================== Tag 操作 ====================
+
+    override fun getAllTags(): Flow<List<Tag>> {
+        return tagDao.getAllTags()
+    }
+
+    override suspend fun insertTag(tag: Tag): Long {
+        return tagDao.insertTag(tag)
+    }
+
+    override suspend fun updateTag(tag: Tag) {
+        tagDao.updateTag(tag)
+    }
+
+    override suspend fun deleteTag(tag: Tag) {
+        tagDao.deleteTag(tag)
+    }
+
+    override suspend fun addTagToTrack(trackId: Long, tagId: Long) {
+        tagDao.insertTrackTagCrossRef(TrackTagCrossRef(trackId, tagId))
+        tagDao.incrementUsageCount(tagId)
+    }
+
+    override suspend fun removeTagFromTrack(trackId: Long, tagId: Long) {
+        tagDao.deleteTrackTagCrossRef(trackId, tagId)
+        tagDao.decrementUsageCount(tagId)
+    }
+
+    override fun getTagsByTrackId(trackId: Long): Flow<List<Tag>> {
+        return tagDao.getTagsByTrackId(trackId)
+    }
+
+    // ==================== Setting 操作 ====================
+
+    override suspend fun getSettingValue(key: String): String? {
+        return settingDao.getSettingValue(key)
+    }
+
+    override suspend fun saveSetting(key: String, value: String, type: SettingType) {
+        settingDao.upsertSetting(key, value, type)
+    }
+
+    override suspend fun getBooleanSetting(key: String, defaultValue: Boolean): Boolean {
+        return settingDao.getSettingValue(key)?.toBooleanStrictOrNull() ?: defaultValue
+    }
+
+    override suspend fun getIntSetting(key: String, defaultValue: Int): Int {
+        return settingDao.getSettingValue(key)?.toIntOrNull() ?: defaultValue
+    }
+
+    // ==================== TrackPhoto 操作 ====================
+
+    override suspend fun addTrackPhoto(photo: TrackPhoto): Long {
+        return trackPhotoDao.insertPhoto(photo)
+    }
+
+    override fun getPhotosByTrackId(trackId: Long): Flow<List<TrackPhoto>> {
+        return trackPhotoDao.getPhotosByTrackId(trackId)
+    }
+
+    override suspend fun deleteTrackPhoto(photo: TrackPhoto) {
+        trackPhotoDao.deletePhoto(photo)
+    }
+
+    override suspend fun setCoverPhoto(photoId: Long) {
+        val photo = trackPhotoDao.getPhotoById(photoId) ?: return
+        trackPhotoDao.clearCoverPhoto(photo.trackId)
+        trackPhotoDao.setAsCoverPhoto(photoId)
     }
 
     /**
@@ -200,7 +266,6 @@ class TrackRepositoryImpl @Inject constructor(
 
     /**
      * 判断是否为漂移点
-     * 简单规则：速度突变超过 20m/s (72km/h) 且非驾车模式
      */
     private fun isDriftPoint(locationData: LocationData): Boolean {
         return locationData.speed > 20f && !locationData.isHighAccuracy

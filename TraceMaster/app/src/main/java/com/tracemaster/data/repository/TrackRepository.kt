@@ -1,8 +1,6 @@
 package com.tracemaster.data.repository
 
-import com.tracemaster.domain.model.SportType
-import com.tracemaster.domain.model.Track
-import com.tracemaster.domain.model.TrackPoint
+import com.tracemaster.domain.model.*
 import com.tracemaster.util.location.LocationData
 import kotlinx.coroutines.flow.Flow
 
@@ -120,4 +118,85 @@ interface TrackRepository {
      * 获取未完成的录制轨迹（用于崩溃恢复）
      */
     suspend fun getUnfinishedTrack(): Track?
+
+    // ==================== Tag 操作 ====================
+
+    /**
+     * 获取所有标签
+     */
+    fun getAllTags(): Flow<List<Tag>>
+
+    /**
+     * 插入标签
+     */
+    suspend fun insertTag(tag: Tag): Long
+
+    /**
+     * 更新标签
+     */
+    suspend fun updateTag(tag: Tag)
+
+    /**
+     * 删除标签
+     */
+    suspend fun deleteTag(tag: Tag)
+
+    /**
+     * 为轨迹添加标签
+     */
+    suspend fun addTagToTrack(trackId: Long, tagId: Long)
+
+    /**
+     * 从轨迹移除标签
+     */
+    suspend fun removeTagFromTrack(trackId: Long, tagId: Long)
+
+    /**
+     * 获取轨迹的标签
+     */
+    fun getTagsByTrackId(trackId: Long): Flow<List<Tag>>
+
+    // ==================== Setting 操作 ====================
+
+    /**
+     * 获取设置值
+     */
+    suspend fun getSettingValue(key: String): String?
+
+    /**
+     * 保存设置值
+     */
+    suspend fun saveSetting(key: String, value: String, type: SettingType = SettingType.STRING)
+
+    /**
+     * 获取布尔设置值
+     */
+    suspend fun getBooleanSetting(key: String, defaultValue: Boolean = false): Boolean
+
+    /**
+     * 获取整数设置值
+     */
+    suspend fun getIntSetting(key: String, defaultValue: Int = 0): Int
+
+    // ==================== TrackPhoto 操作 ====================
+
+    /**
+     * 添加轨迹照片
+     */
+    suspend fun addTrackPhoto(photo: TrackPhoto): Long
+
+    /**
+     * 获取轨迹的照片
+     */
+    fun getPhotosByTrackId(trackId: Long): Flow<List<TrackPhoto>>
+
+    /**
+     * 删除轨迹照片
+     */
+    suspend fun deleteTrackPhoto(photo: TrackPhoto)
+
+    /**
+     * 设置封面照片
+     */
+    suspend fun setCoverPhoto(photoId: Long)
 }

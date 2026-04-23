@@ -38,12 +38,25 @@ class Converters {
 /**
  * 轨迹数据库 - Room Database
  * 
- * 包含两个表：
+ * 包含以下表：
  * 1. tracks - 轨迹主表
  * 2. track_points - 轨迹点表
+ * 3. track_segments - 轨迹分段表
+ * 4. track_photos - 轨迹照片表
+ * 5. tags - 标签表
+ * 6. track_tags - 轨迹标签关联表
+ * 7. settings - 设置表
  */
 @Database(
-    entities = [Track::class, TrackPoint::class],
+    entities = [
+        Track::class,
+        TrackPoint::class,
+        TrackSegment::class,
+        TrackPhoto::class,
+        Tag::class,
+        TrackTagCrossRef::class,
+        Setting::class
+    ],
     version = 1,
     exportSchema = true
 )
@@ -51,6 +64,10 @@ class Converters {
 abstract class TrackDatabase : RoomDatabase() {
 
     abstract fun trackDao(): TrackDao
+    abstract fun trackSegmentDao(): TrackSegmentDao
+    abstract fun trackPhotoDao(): TrackPhotoDao
+    abstract fun tagDao(): TagDao
+    abstract fun settingDao(): SettingDao
 
     companion object {
         @Volatile
